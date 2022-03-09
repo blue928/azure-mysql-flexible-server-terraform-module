@@ -36,7 +36,7 @@ resource "azurerm_mysql_flexible_server" "fs_db" {
   high_availability {
     # research this API change, not documented. todo
     standby_availability_zone = "1"
-    mode = "SameZone"
+    mode                      = "SameZone"
   }
 
   tags = {}
