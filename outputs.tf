@@ -6,3 +6,7 @@ output "fs_db_server_name" {
 output "fs_db_server_fqdn" {
   value = azurerm_mysql_flexible_server.fs_db.fqdn
 }
+
+output "production_db_name" {
+  value = azurerm_mysql_flexible_database.production_db_name
+}

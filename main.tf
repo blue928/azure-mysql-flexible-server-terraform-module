@@ -10,6 +10,8 @@
 
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server
 
+# TODO refactor the variables in a way that a "project name" type variable auto generates
+# the others. # maybe resource name resource=mysql_flexible_server local.admin login = {resourcename}-sku_name, etc
 resource "azurerm_mysql_flexible_server" "fs_db" {
   name                   = var.fs_db_server_name
   resource_group_name    = var.resource_group_name
@@ -41,13 +43,6 @@ resource "azurerm_mysql_flexible_server" "fs_db" {
 
 }
 
-resource "azurerm_mysql_flexible_server_configuration" "fs_db" {
-  name                = "require_secure_transport"
-  resource_group_name = var.resource_group_name
-  server_name         = azurerm_mysql_flexible_server.fs_db.name
-  value               = "OFF"
-}
-
 # See the following reference for examples on setting up firewall rules:
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server_firewall_rule
 resource "azurerm_mysql_flexible_server_firewall_rule" "fs_db_fw" {
@@ -60,7 +55,7 @@ resource "azurerm_mysql_flexible_server_firewall_rule" "fs_db_fw" {
 
 # Databases: these are created when the server is created
 # Drupal Database information: https://www.drupal.org/docs/7/api/schema-api/data-types/encoding-collation-and-storage
-resource "azurerm_mysql_flexible_database" "prod_db_name" {
+resource "azurerm_mysql_flexible_database" "production_db_name" {
   name                = var.fs_db_server_prod_db_name
   resource_group_name = var.resource_group_name
   server_name         = azurerm_mysql_flexible_server.fs_db.name
@@ -76,7 +71,7 @@ resource "azurerm_mysql_flexible_database" "staging_db_name" {
   collation           = "utf8_general_ci"
 }
 
-resource "azurerm_mysql_flexible_database" "dev_db_name" {
+resource "azurerm_mysql_flexible_database" "devevelopment_db_name" {
   name                = var.fs_db_server_dev_db_name
   resource_group_name = var.resource_group_name
   server_name         = azurerm_mysql_flexible_server.fs_db.name
