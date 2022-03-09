@@ -32,6 +32,8 @@ resource "azurerm_mysql_flexible_server" "fs_db" {
     size_gb = 64
   }
   high_availability {
+    # research this API change, not documented. todo
+    standby_availability_zone = "1"
     mode = "SameZone"
   }
 
