@@ -71,7 +71,7 @@ resource "azurerm_mysql_flexible_database" "staging_db_name" {
   collation           = "utf8_general_ci"
 }
 
-resource "azurerm_mysql_flexible_database" "devevelopment_db_name" {
+resource "azurerm_mysql_flexible_database" "development_db_name" {
   name                = var.fs_db_server_dev_db_name
   resource_group_name = var.resource_group_name
   server_name         = azurerm_mysql_flexible_server.fs_db.name
