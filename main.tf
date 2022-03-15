@@ -33,11 +33,11 @@ resource "azurerm_mysql_flexible_server" "fs_db" {
     # This is the MAX size allowed for auto grow. 
     size_gb = 64
   }
-  high_availability {
+  #high_availability {
     # research this API change, not documented. todo
-    standby_availability_zone = "1"
-    mode                      = "SameZone"
-  }
+  #  standby_availability_zone = "1"
+  #  mode                      = "SameZone"
+  #}
 
   tags = {}
 
