@@ -28,7 +28,7 @@ resource "azurerm_mysql_flexible_server" "fs_db" {
   # Note that the sku_name must be at least GeneralPurpose for HA to work.
   storage {
     auto_grow_enabled = true
-    iops              = 1000
+    # iops              = 1000
 
     # This is the MAX size allowed for auto grow. 
     size_gb = 64
